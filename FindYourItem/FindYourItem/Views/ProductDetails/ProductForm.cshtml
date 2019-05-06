@@ -1,0 +1,56 @@
+﻿@model FindYourItem.ViewModels.ProductFormViewModel
+@{
+    /**/
+    var title = (Model.ProductDetails == null) ? "New Product" : "Edit Product";
+
+    ViewBag.Title = @title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@title</h2>
+
+
+@using (Html.BeginForm("Save", "ProductDetails"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.ProductDetails.Name)
+        @Html.TextBoxFor(m => m.ProductDetails.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ProductDetails.Name)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.ProductDetails.Price)
+        @Html.TextBoxFor(m => m.ProductDetails.Price, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ProductDetails.Price)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.ProductDetails.Quantity)
+        @Html.TextBoxFor(m => m.ProductDetails.Quantity, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ProductDetails.Quantity)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.ProductDetails.AisleNumber)
+        @Html.TextBoxFor(m => m.ProductDetails.AisleNumber, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ProductDetails.AisleNumber)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.ProductDetails.Location)
+        @Html.TextBoxFor(m => m.ProductDetails.Location, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ProductDetails.Location)
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.ProductDetails.ProductNameId)
+        @Html.DropDownListFor(m => m.ProductDetails.ProductNameId, new SelectList(Model.ProductNames, "Id", "Name"), "Select Product", new { @class = "form-control" })
+        @* @Html.ValidationMessageFor(m => m.ProductDetails.ProductNameId)*@
+    </div>
+
+    @Html.HiddenFor(m => m.ProductDetails.Id)
+
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+

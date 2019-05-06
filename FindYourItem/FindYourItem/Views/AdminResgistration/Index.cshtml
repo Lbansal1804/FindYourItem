@@ -1,0 +1,60 @@
+﻿@model FindYourItem.Models.AdminDetail
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm("Save", "AdminResgistration"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.StoreId)
+        @Html.TextBoxFor(m => m.StoreId, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.StoreId)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.AdminName)
+        @Html.TextBoxFor(m => m.AdminName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.AdminName)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Username)
+        @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Username)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Password)
+        @Html.TextBoxFor(m => m.Password, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Password)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.EmailAddress)
+        @Html.TextBoxFor(m => m.EmailAddress, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.EmailAddress)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Location)
+        @Html.TextBoxFor(m => m.Location, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Location)
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-2">
+            <label class="label-danger">@ViewBag.DuplicateMessage</label>
+    
+        </div>
+    </div>
+    @*@Html.HiddenFor(m => m.Id)*@
+
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+
+
+

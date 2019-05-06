@@ -1,0 +1,51 @@
+﻿@model IEnumerable<FindYourItem.Models.ProductDetails>
+
+@{
+    ViewBag.Title = "ProductIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Product</h2>
+
+<p>@Html.ActionLink("New Product", "New", "ProductDetails", null, new { @class = "btn btn-primary" })</p>
+
+@if(!Model.Any())
+{
+    <p>No Product Added Yet..</p>
+
+}
+
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Price($)</th>
+                <th>Quantity</th>
+                <th>Aisle Number</th>
+                <th>Location</th>
+                <th>Product Name</th>
+                @*<th>Store Id</th>*@
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var productDetails in Model)
+            {
+            <tr>
+                <td>@Html.ActionLink(productDetails.Name, "Edit", "ProductDetails", new { id = productDetails.Id }, null)</td>
+                <td>@productDetails.Price</td>
+                <td>@productDetails.Quantity</td>
+                <td>@productDetails.AisleNumber</td>
+                <td>@productDetails.Location</td>
+                <td>@productDetails.ProductName.Name</td>
+                @*<td>@productDetails.AdminDetail.StoreId</td>*@
+            </tr>
+
+            }
+
+        </tbody>
+    </table>
+}
+

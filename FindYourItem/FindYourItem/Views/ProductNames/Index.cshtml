@@ -1,0 +1,40 @@
+﻿@model IEnumerable<FindYourItem.Models.ProductName>
+@{
+    ViewBag.Title = "Product Name";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Item</h2>
+<p>@Html.ActionLink("New Item", "New", "ProductNames", null, new { @class = "btn btn-primary" })</p>
+
+@if(!Model.Any())
+{
+    <p>No Item Added yet..</p>
+
+}
+
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var productNames in Model)
+            {
+            <tr>
+                <td>@productNames.Id</td>
+                <td>@productNames.Name</td>
+                @*<td>@Html.ActionLink(productNames.Name, "Edit", "ProductNames", new { id = productNames.Id }, null)</td>*@
+
+
+            </tr>
+
+            }
+        </tbody>
+    </table>
+}
+
